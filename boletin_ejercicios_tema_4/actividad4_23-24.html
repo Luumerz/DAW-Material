@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            margin-left: 5px;
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .item p {
+            margin: 0;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <label for="texto">Texto </label>
+    <input type="text" id="texto">
+    <button id="btnTexto">Insertar texto nuevo</button>
+    <button id="btIntercambiar">Intercambiar</button>
+    <div id="contenedor">
+
+    </div>
+
+    <script>
+        let contener = document.getElementById('contenedor');
+        document.getElementById('btnTexto').addEventListener('click', nuevoTextoF);
+        document.getElementById('btIntercambiar').addEventListener('click', intercambiarF);
+
+        function nuevoTextoF() {
+            var texto = document.getElementById('texto').value;
+
+            let item = document.createElement('div');
+            item.className = 'item';
+
+            var p = document.createElement('p');
+            p.innerHTML = texto;
+
+            let btnCopiar = document.createElement('button');
+            btnCopiar.innerHTML = 'Copiar';
+            btnCopiar.id = 'btnCopiar';
+            btnCopiar.addEventListener('click', copiarF);
+            let btnBorrar = document.createElement('button');
+            btnBorrar.innerHTML = 'Borrar';
+            btnBorrar.id = 'btnBorrar';
+            btnBorrar.addEventListener('click', borrarF);
+            let btnActualizar = document.createElement('button');
+            btnActualizar.innerHTML = 'Actualizar';
+            btnActualizar.id = 'btnActualizar';
+            btnActualizar.addEventListener('click', actualizarF);
+
+            item.appendChild(p);
+            item.appendChild(btnCopiar);
+            item.appendChild(btnBorrar);
+            item.appendChild(btnActualizar);
+
+            document.getElementById('contenedor').appendChild(item);
+        }
+
+        function copiarF() {
+            let p = this.previousElementSibling;
+            let texto = p.innerHTML;
+            navigator.clipboard.writeText(texto);
+        }
+
+        function borrarF() {
+            let item = this.parentElement;
+            item.remove();
+        }
+
+        function actualizarF() {
+            let x = this.previousElementSibling.previousElementSibling;
+            let p = x.previousElementSibling;
+            let texto = prompt('Introduce el nuevo texto', p.innerHTML);
+            p.innerHTML = texto;
+        }
+
+        function intercambiarF() {
+            let items = document.getElementsByClassName('item');
+
+            let contenedor = document.getElementById('contenedor');
+            let primerElemento = items[0];
+            let ultimoElemento = items[items.length - 1];
+
+            let primerElementoClonado = primerElemento.cloneNode(true);
+            let ultimoElementoClonado = ultimoElemento.cloneNode(true);
+
+            contenedor.replaceChild(ultimoElementoClonado, primerElemento);
+
+            contenedor.replaceChild(primerElementoClonado, ultimoElemento);
+        }
+    </script>
+</body>
+</html>
