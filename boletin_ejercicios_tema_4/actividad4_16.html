@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Modificacion tamaño de texto</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, quasi doloremque est eaque tenetur voluptate minus ipsam nisi saepe aspernatur repellat tempore ut in, hic harum ducimus officia dicta vero facilis vitae ab minima voluptatum, rerum numquam. Eaque numquam tempore sequi totam ducimus sit explicabo nemo. Quas, ab similique deserunt sequi dignissimos, fuga accusamus, alias laborum dolorem deleniti eius ipsa?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, quasi doloremque est eaque tenetur voluptate minus ipsam nisi saepe aspernatur repellat tempore ut in, hic harum ducimus officia dicta vero facilis vitae ab minima voluptatum, rerum numquam. Eaque numquam tempore sequi totam ducimus sit explicabo nemo. Quas, ab similique deserunt sequi dignissimos, fuga accusamus, alias laborum dolorem deleniti eius ipsa?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, quasi doloremque est eaque tenetur voluptate minus ipsam nisi saepe aspernatur repellat tempore ut in, hic harum ducimus officia dicta vero facilis vitae ab minima voluptatum, rerum numquam. Eaque numquam tempore sequi totam ducimus sit explicabo nemo. Quas, ab similique deserunt sequi dignissimos, fuga accusamus, alias laborum dolorem deleniti eius ipsa?</p>
+    <label for="size">Seleccionar tamaño</label>
+    <select name="size" id="selectSize">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+    </select>
+    <button id="btn">Cambiar</button>
+    
+    <script>
+        let selectSize = document.getElementById('selectSize');
+        let button = document.getElementById('btn');
+        let p = document.querySelectorAll('p');
+
+        button.addEventListener('click', ()=>{
+            p.forEach(p => {
+                switch(selectSize.value){
+                    case 'small':
+                        p.style.fontSize = '12px';
+                        break;
+                    case 'medium':
+                        p.style.fontSize = '16px';
+                        break;
+                    case 'large':
+                        p.style.fontSize = '20px';
+                        break;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

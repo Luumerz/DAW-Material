@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            margin-bottom: 10px;
+        }
+        #btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <button id="btn">Añadir párrafo</button>
+
+    <script>
+        let container = document.getElementById('container');
+        let btn = document.getElementById('btn');
+        let cont = 0;
+
+        btn.addEventListener('click', ()=>{
+            cont++;
+            let p = document.createElement('p');
+            p.textContent = 'Párrafo número ' + cont;
+            container.appendChild(p);
+        });
+    </script>
+</body>
+</html>
