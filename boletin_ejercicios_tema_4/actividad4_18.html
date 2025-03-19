@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Modificacion color de texto</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, quasi doloremque est eaque tenetur voluptate
+        minus ipsam nisi saepe aspernatur repellat tempore ut in, hic harum ducimus officia dicta vero facilis vitae ab
+        minima voluptatum, rerum numquam. Eaque numquam tempore sequi totam ducimus sit explicabo nemo. Quas, ab
+        similique deserunt sequi dignissimos, fuga accusamus, alias laborum dolorem deleniti eius ipsa?</p>
+    <p id="ocu">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, quasi doloremque est eaque tenetur
+        voluptate minus ipsam nisi saepe aspernatur repellat tempore ut in, hic harum ducimus officia dicta vero facilis
+        vitae ab minima voluptatum, rerum numquam. Eaque numquam tempore sequi totam ducimus sit explicabo nemo. Quas,
+        ab similique deserunt sequi dignissimos, fuga accusamus, alias laborum dolorem deleniti eius ipsa?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, quasi doloremque est eaque tenetur voluptate
+        minus ipsam nisi saepe aspernatur repellat tempore ut in, hic harum ducimus officia dicta vero facilis vitae ab
+        minima voluptatum, rerum numquam. Eaque numquam tempore sequi totam ducimus sit explicabo nemo. Quas, ab
+        similique deserunt sequi dignissimos, fuga accusamus, alias laborum dolorem deleniti eius ipsa?</p>
+    <label for="visibility">Seleccionar visibilidad</label>
+    <input type="checkbox" name="visibility" id="visibility">
+    <select name="display" id="selectDisplay">
+        <option value="inline">Inline</option>
+        <option value="none">None</option>
+    </select>
+    <button id="btn">Cambiar</button>
+
+    <script>
+        let button = document.getElementById('btn');
+        let selectDisplay = document.getElementById('selectDisplay');
+        let visibility = document.getElementById('visibility');
+        let p = document.getElementById('ocu');
+
+        button.addEventListener('click', () => {
+
+            if (visibility.checked) {
+                p.style.visibility = 'hidden';
+            } else {
+                p.style.visibility = 'visible';
+            }
+            
+            switch (selectDisplay.value) {
+                case 'inline':
+                    p.style.display = 'inline';
+                    break;
+                case 'none':
+                    p.style.display = 'none';
+                    break;
+            }
+        });
+    </script>
+</body>
+
+</html>
