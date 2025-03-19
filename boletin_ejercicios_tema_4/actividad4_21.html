@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>DOM</title>
+</head>
+
+<body>
+    <script>
+        let i = 0;
+        function addParagraph() {
+            if (i <= 4) {
+                let parrafos = document.getElementsByTagName("p");
+                let color = document.getElementById("txtColor").value;
+                parrafos[i].style.color = color;
+                parrafos[i].innerHTML = "párrafo" + i;
+                i++;
+            }
+        }    
+    </script>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <label>Color del párrafo</label><input type="text" id="txtColor" value="blue" /></br>
+    <input type="button" onclick="addParagraph();" value="Añadir párrafos" />
+</body>
+
+</html>

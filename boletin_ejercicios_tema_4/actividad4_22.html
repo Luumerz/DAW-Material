@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <hr>
+    <h2>Lista dinámica</h2>
+    <div class="div">
+        <ul id="list">
+
+        </ul>
+    </div>
+    <hr>
+    <label for="nuevoTexto">Nuevo Texto: </label>
+    <input type="text" id="nuevoTexto">
+    <br>
+    <br>
+    <button id="addIns">Añadir elemento con insertAdjacentHTML</button>
+    <br>
+    <br>
+    <button id="addCre">Añadir elemento con createElement</button>
+
+    <script>
+
+        let addIns = document.getElementById("addIns");
+        let addCre = document.getElementById("addCre");
+        addIns.addEventListener("click", addInsF);
+        addCre.addEventListener("click", addCreF);
+
+        function addInsF() {
+            let list = document.getElementById("list");
+            let nuevoTexto = document.getElementById("nuevoTexto").value;
+            list.insertAdjacentHTML("beforeend", "<li>" + nuevoTexto + "</li>");
+        }
+
+        function addCreF() {
+            let list = document.getElementById("list");
+            let nuevoTexto = document.getElementById("nuevoTexto").value;
+            let li = document.createElement("li");
+            li.appendChild(document.createTextNode(nuevoTexto));
+            list.appendChild(li);
+        }
+    </script>
+</body>
+</html>
