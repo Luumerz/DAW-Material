@@ -140,9 +140,9 @@ function generarTabla() {
     let tbody = document.createElement('tbody');
     tabla.innerHTML = ''; // Limpiar la tabla
 
-    let encabezado = '<tr><th></th>'; // Primer <th> vacío sin borde
+    let encabezado = '<tr><th></th>'; 
     for (let dia of dias) {
-        encabezado += `<th>${dia.nombre}</th>`; // Añadir los días al encabezado
+        encabezado += `<th>${dia.nombre}</th>`;
     }
     encabezado += '</tr>';
     thead.innerHTML = encabezado;
