@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/css/bootstrap.css">
+    <style>
+        .login-background-image {
+            background-image: url(../src/assets/img/login_background.png);
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="container-fluid vh-100">
+    <div class="row h-100">
+        <!-- Imagen de fondo -->
+        <div class="col-12 d-lg-none login-background-image position-absolute top-0 start-0 w-100 h-100"></div>
+
+        <!-- Formulario -->
+        <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center order-lg-2 z-1 rounded-5">
+            <div class="bg-light p-5 rounded-5 shadow w-100" style="max-width: 400px;">
+                <form class="row g-4" action="index.html" method="POST">
+                    <!-- Email -->
+                    <div class="col-12">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control bg-primary text-black" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                    </div>
+                    <!-- Password -->
+                    <div class="col-12">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control bg-primary text-black" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100 text-black">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Imagen de fondo en pantallas grandes -->
+        <div class="col-12 col-lg-8 login-background-image d-none d-lg-block order-1"></div>
+    </div>
+</body>
+
+</html>
