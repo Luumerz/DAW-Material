@@ -1,0 +1,42 @@
+.forma
+{
+    display: inline-flex;
+    width: 5rem;
+    height: 5rem;
+    font-size:3rem;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.columna{
+    background-color:gray;
+    border-width: 1px;
+}
+
+#menu{
+    height: 50px;
+}
+#menu ul{
+    list-style:none;
+    line-height: 50px;
+}
+
+footer{
+    height: 50px;
+    line-height: 50px;
+}
+
+.item{
+    height: 150px;
+}
+
+.lateral{
+    height:250px;
+}
+
+.lateral > div {
+    height:calc(250px / 3);
+}

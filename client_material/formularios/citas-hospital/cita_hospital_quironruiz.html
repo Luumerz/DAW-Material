@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <div class="container border">
+        <div class="row">
+            <header id="hearder" class="col-12 text-white p-4">
+                <div style="display:flex">
+                    <img src="images/quiron_logo.png" alt="">
+                    <h1>Citas Hospital Quirón Ruiz</h1>
+                </div>
+
+            </header>
+
+            <nav id="menu" class="col-12 bg-secondary text-white">
+                <ul class="row w-50">
+                    <li class="col">Inicio</li>
+                    <li class="col">Página 1</li>
+                    <li class="col">Página 2</li>
+                    <li class="col">Página 3</li>
+                    <li class="col">Contacto</li>
+                </ul>
+            </nav>
+
+            <div id="content" class="col-12 mb-4">
+                <div class="row">
+                    <section class="container border col-9 mt-4 mb-4">
+                        <h1>Formulario solicitud de cita</h1>
+                        <hr>
+                        <form name="miformulario" method="POST" action="procesar.php">
+                            <h4>Datos Personales</h4>
+
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <label for="inputNombre" class="form-label">Nombre(*)</label>
+                                    <input type="text" class="form-control" id="inputNombre">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputApellidos" class="form-label">Apellidos(*)</label>
+                                    <input type="text" class="form-control" id="inputApellidos">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputDNI" class="form-label">DNI(*)</label>
+                                    <input type="text" class="form-control" id="inputDNI" placeholder="Ej 44958615D">
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-8">
+                                    <label class="form-label" for="inputSeguroMedico">Seguro Médico:</label>
+                                    <select class="form-control form-select" id="inputSeguroMedico">
+                                        <option value="">Seleccionar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <h4>Médico</h4>
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="medico"
+                                            id="inputMedicoFamilia" checked>
+                                        <label class="form-check-label" for="inputMedicoFamilia">
+                                            Médico de familia (cabecera)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="medico"
+                                            id="inputMedicoEspecialista">
+                                        <label class="form-check-label" for="inputMedicoEspecialista">
+                                            Médico especialista
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <label class="form-label" for="inputEspecialidad">Especialidad:</label>
+                                    <select class="form-control form-select" id="inputEspecialidad" disabled>
+                                        <option value="">Seleccionar</option>
+                                        <option value="1">Cardiólogo</option>
+                                        <option value="2">Traumatólogo</option>
+                                        <option value="3">Dermatólogo</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <h4>Fecha</h4>
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <label class="form-label" for="inputFechaCita">Fecha(lunes a jueves) (*):</label>
+                                    <input class="form-control" type="date" id="inputFechaCita">
+                                </div>
+                                <div class="col-md-8">
+                                    <label class="form-label" for="inputHoraCita">Lunes a Miércoles (10:00-14:15) Jueves (18:30-20:00) (*):</label>
+                                    <input class="form-control" type="time" id="inputHoraCita">
+                                </div>
+                            </div>
+                            <hr>
+                            <input type="submit" class="btn btn-primary" id="enviar" value="Enviar">
+                            <input type="reset" class="btn btn-warning" value="Borrar">
+                        </form>
+                    </section>
+
+                    <aside class="col-3 border mt-4 mb-4">
+                        <h2>Servicios</h2>
+                        <div class="lateral row bg-light align-items-center">
+                            <div class="col bg-primary col-4 align-self-start">Servicio 1</div>
+                            <div class="col bg-success col-4 align-self-center">Servicio 2</div>
+                            <div class="col bg-warning col-4 align-self-end">Servicio 3</div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer class="col-lg-12 bg-info">
+            Quirón Ruiz Diciembre 2023&copy;
+        </footer>
+
+    </div>
+    </div>
+
+
+
+    <script src="hospital_quironruiz.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/funciones.js"></script>
+
+</body>
+
+</html>

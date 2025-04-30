@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Incidentes</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <style>
+        .logo-img {
+            height: 100px;
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+        .bg-image-incidents {
+            background-image: url(../assets/img/incidents_background.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top p-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="../../public/login.html">
+                <img src="../assets/img/Logo_incidendias_iesruizgijon.png" alt="Logo" class="logo-img me-2">
+            </a>
+
+            <div class="justify-content-end" id="menuNav">
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="40"
+                                height="40" fill="currentColor" class="bi bi-person-circle text-dark"
+                                viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido -->
+    <div class="bg-image-incidents container-fluid py-5 flex-grow-1">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <h1 class="text-center text-white mb-4">Añadir Incidente</h1>
+                <form id="addIncidentForm" class="bg-white p-4 rounded shadow-sm">
+                    <div class="mb-3">
+                        <label for="incidentTitle" class="form-label">Título del Incidente</label>
+                        <input type="text" class="form-control" id="incidentTitle" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="incidentDescription" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="incidentDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="incidentDate" class="form-label">Fecha del Incidente</label>
+                        <input type="date" class="form-control" id="incidentDate" required>
+                    </div>
+                    <select class="form-select mb-3" aria-label="Status">
+                        <option selected disabled>Estado</option>
+                        <option value="1" class="bg-danger">Urgente</option>
+                        <option value="2" class="bg-success">Solucionada</option>
+                        <option value="3" class="bg-warning">Pendiente</option>
+                    </select>
+                    <a href="incidents.html" class="btn btn-danger"><- Volver a incidencias</a>
+                            <button type="submit" class="btn btn-primary float-end">Añadir Incidente</button>
+                </form>
+            </div>
+        </div>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
