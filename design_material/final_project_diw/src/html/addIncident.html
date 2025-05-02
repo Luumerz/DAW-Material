@@ -60,21 +60,21 @@
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
                 <h1 class="text-center text-white mb-4">Añadir Incidente</h1>
-                <form id="addIncidentForm" class="bg-white p-4 rounded shadow-sm">
+                <form id="addIncidentForm" novalidate class="bg-white p-4 rounded shadow-sm  needs-validation" method="POST">
                     <div class="mb-3">
                         <label for="incidentTitle" class="form-label">Título del Incidente</label>
-                        <input type="text" class="form-control" id="incidentTitle" required>
+                        <input type="text" class="form-control" required id="incidentTitle" required>
                     </div>
                     <div class="mb-3">
                         <label for="incidentDescription" class="form-label">Descripción</label>
-                        <textarea class="form-control" id="incidentDescription" rows="4" required></textarea>
+                        <textarea class="form-control" required id="incidentDescription" rows="4" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="incidentDate" class="form-label">Fecha del Incidente</label>
-                        <input type="date" class="form-control" id="incidentDate" required>
+                        <input type="date" class="form-control" required id="incidentDate" required>
                     </div>
-                    <select class="form-select mb-3" aria-label="Status">
-                        <option selected disabled>Estado</option>
+                    <select class="form-select mb-3" required aria-label="Status">
+                        <option selected disabled value="">Estado</option>
                         <option value="1" class="bg-danger">Urgente</option>
                         <option value="2" class="bg-success">Solucionada</option>
                         <option value="3" class="bg-warning">Pendiente</option>
@@ -85,6 +85,7 @@
             </div>
         </div>
         <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="../js/form-validation.js"></script>
 </body>
 
 </html>

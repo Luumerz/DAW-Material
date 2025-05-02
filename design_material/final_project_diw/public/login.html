@@ -24,20 +24,20 @@
         <!-- Formulario -->
         <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center order-lg-2 z-1 rounded-5">
             <div class="bg-light p-5 rounded-5 shadow w-100" style="max-width: 400px;">
-                <form class="row g-4" action="../src/html/incidents.html" method="POST">
+                <form class="row g-4 needs-validation" novalidate action="../src/html/incidents.html" method="POST">
                     <!-- Email -->
                     <div class="col-12">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control bg-primary text-black" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                        <input type="email" class="form-control bg-info text-black" required id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                     </div>
                     <!-- Password -->
                     <div class="col-12">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control bg-primary text-black" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control bg-info text-black" required id="exampleInputPassword1" placeholder="Password">
                     </div>
                     <!-- Submit Button -->
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary w-100 text-black">Submit</button>
+                        <button type="submit" class="btn btn-info w-100 text-black">Submit</button>
                     </div>
                 </form>
             </div>
@@ -46,6 +46,9 @@
         <!-- Imagen de fondo en pantallas grandes -->
         <div class="col-12 col-lg-8 login-background-image d-none d-lg-block order-1"></div>
     </div>
+
+    <script src="../src/js/bootstrap.bundle.min.js"></script>
+    <script src="../src/js/form-validation.js"></script>
 </body>
 
 </html>
