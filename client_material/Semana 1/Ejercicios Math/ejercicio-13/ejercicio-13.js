@@ -1,0 +1,1 @@
+console.log(Math.floor(Math.random() * (79 - 26 + 1)) + 26);
