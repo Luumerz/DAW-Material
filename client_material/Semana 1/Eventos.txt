@@ -1,0 +1,114 @@
+=======================
+EVENTOS EN JAVASCRIPT
+=======================
+
+--- Eventos de Mouse ---
+click
+dblclick
+mousedown
+mouseup
+mouseenter
+mouseleave
+mousemove
+mouseout
+mouseover
+contextmenu
+
+--- Eventos de Teclado ---
+keydown
+keyup
+keypress
+
+--- Eventos de Formulario ---
+submit
+change
+input
+focus
+blur
+reset
+invalid
+
+--- Eventos de Carga ---
+load
+unload
+beforeunload
+DOMContentLoaded
+error
+
+--- Eventos de Clipboard (Portapapeles) ---
+copy
+cut
+paste
+
+--- Eventos de Drag & Drop ---
+drag
+dragstart
+dragend
+dragenter
+dragleave
+dragover
+drop
+
+--- Eventos de Pantalla/Ventana ---
+resize
+scroll
+fullscreenchange
+fullscreenerror
+
+--- Eventos de Medios (audio/video) ---
+play
+pause
+playing
+ended
+volumechange
+timeupdate
+seeking
+seeked
+canplay
+canplaythrough
+waiting
+stalled
+loadedmetadata
+loadeddata
+
+--- Eventos del Touch (táctiles) ---
+touchstart
+touchmove
+touchend
+touchcancel
+
+--- Eventos del Pointer (puntero) ---
+pointerdown
+pointerup
+pointermove
+pointerover
+pointerout
+pointerenter
+pointerleave
+pointercancel
+
+--- Eventos de Animación y Transición ---
+animationstart
+animationend
+animationiteration
+transitionstart
+transitionend
+transitionrun
+transitioncancel
+
+--- Eventos del Web Storage ---
+storage
+
+--- Eventos del Port (Broadcast/Message) ---
+message
+messageerror
+
+--- Otros eventos útiles ---
+hashchange
+popstate
+online
+offline
+visibilitychange
+wheel
+toggle
+
