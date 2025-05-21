@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function validaCP(codigo) {
+            let regex = /^\s*\d{5}\s*$/;
+            if(regex.test(codigo)) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+        function extraeCPs(frase) {
+            let regex = /\b\s*\d{5}\s*\b/g;
+            let coincidencias = frase.match(regex);
+            if(coincidencias){
+                coincidencias = coincidencias.map(cp => cp.trim());
+                return coincidencias;
+            }else {
+                return [];
+            }
+        }
+
+        function sustituyeCPs(frase) {
+            let regex = /\b\d{5}\b/g;
+            let nuevaFrase = frase.replace(regex, "C.P");
+            return nuevaFrase;
+        }
+
+        console.log(validaCP("12345")); // true
+        console.log(validaCP("1234")); // false
+        console.log(extraeCPs("El código postal es 12345 y el de Madrid es 28001.")); // ["12345", "28001"]
+        console.log(sustituyeCPs("El código postal es 12345 y el de Madrid es 28001.")); // "El código postal es C.P y el de Madrid es C.P."
+    </script>
+</body>
+</html>

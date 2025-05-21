@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function extraerPosicionesEmails(frase) {
+            let regex = /\b[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,6}\b/g;
+            let result = frase.match(regex);
+            if (result) {
+                return result;
+            } else {
+                return [];
+            }
+        }
+        console.log(extraerPosicionesEmails("Mi correo es deluismr@gmail.com y mi número es 1234567890 pepe@gmail.com"));
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta Paciente</title>
+    <style>
+        label { display: block; margin-top: 10px; }
+        .inline { display: inline-block; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <form id="formPaciente" action="#" method="POST" autocomplete="off">
+        <label>
+            Nombre:
+            <input type="text" name="nombre" id="nombre" maxlength="30" required>
+        </label>
+
+        <label>Sexo:</label>
+        <label class="inline"><input type="radio" name="sexo" value="Hombre" required> Hombre</label>
+        <label class="inline"><input type="radio" name="sexo" value="Mujer" required> Mujer</label>
+
+        <label>
+            Altura (cm):
+            <input type="number" name="altura" id="altura" min="50" max="210" required>
+        </label>
+
+        <label>
+            Fecha de nacimiento:
+            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
+        </label>
+
+        <label>
+            Semana Preferente:
+            <input type="week" name="semana_preferente" id="semana_preferente">
+        </label>
+
+        <label>
+            <input type="checkbox" name="fumador" id="fumador">
+            Fumador
+        </label>
+        <label>
+            Nº de cigarrillos:
+            <select name="cigarrillos" id="cigarrillos" disabled>
+                <option value="">Seleccionar</option>
+                <option value="1-5">1-5</option>
+                <option value="6-10">6-10</option>
+                <option value="mas10">Más de 10</option>
+            </select>
+        </label>
+
+        <label>
+            Observaciones:
+            <textarea name="observaciones" id="observaciones" rows="3"></textarea>
+        </label>
+
+        <button type="submit">Enviar</button>
+        <button type="reset">Borrar</button>
+    </form>
+
+    <script>
+        // Habilitar/deshabilitar select de cigarrillos según fumador
+        const fumador = document.getElementById('fumador');
+        const cigarrillos = document.getElementById('cigarrillos');
+        const form = document.getElementById('formPaciente');
+
+        fumador.addEventListener('change', function() {
+            cigarrillos.disabled = !fumador.checked;
+            if (!fumador.checked) {
+                cigarrillos.value = "";
+                cigarrillos.removeAttribute('required');
+            } else {
+                cigarrillos.setAttribute('required', 'required');
+            }
+        });
+
+        // Validar mayor de edad
+        form.addEventListener('submit', function(e) {
+            const fechaNac = document.getElementById('fecha_nacimiento').value;
+            if (fechaNac) {
+                const hoy = new Date();
+                const fecha = new Date(fechaNac);
+                let edad = hoy.getFullYear() - fecha.getFullYear();
+                const m = hoy.getMonth() - fecha.getMonth();
+                if (m < 0 || (m === 0 && hoy.getDate() < fecha.getDate())) {
+                    edad--;
+                }
+                if (edad < 18) {
+                    alert('El paciente debe ser mayor de edad.');
+                    e.preventDefault();
+                    return false;
+                }
+            }
+            // Validar cigarrillos si es fumador
+            if (fumador.checked && !cigarrillos.value) {
+                alert('Debe seleccionar el número de cigarrillos si es fumador.');
+                cigarrillos.focus();
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

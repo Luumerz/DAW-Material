@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function validaNumeroDecimal(frase) {
+            let regex = /^\s*[+-]?(\d+)(,\d+)\s*?$/;
+            let resultado = regex.test(frase);
+            return resultado;
+        }
+        console.log(validaNumeroDecimal("  -1234,56 ")); // true
+        console.log(validaNumeroDecimal("1234,56")); // true
+        console.log(validaNumeroDecimal("1234.56")); // false
+        console.log(validaNumeroDecimal("1234,56 ")); // true
+    </script>
+</body>
+</html>

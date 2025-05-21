@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function validaDNI(dni) {
+            let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+            let regex = /^\s*(\d{8})-?([a-zA-Z])\s*$/;
+
+            const match = dni.match(regex);
+            if (!match) {
+                return false;
+            }
+
+            let numero = parseInt(match[1]);
+            let letra = match[2].toUpperCase();
+            let letraCorrecta = letras.charAt(numero % 23);
+            return letra === letraCorrecta;
+        }
+
+        console.log(validaDNI("12345678-Z")); // true
+        console.log(validaDNI("12345678-A")); // false
+    </script>
+</body>
+
+</html>

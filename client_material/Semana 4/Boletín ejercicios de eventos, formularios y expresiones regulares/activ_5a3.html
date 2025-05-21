@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Eventos</h1>
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="localidades">Localidad: </label>
+        <select name="localidades" id="localidades">
+            <option value="" selected disabled>Selecciona una localidad</option>
+            <option value="Utrera">Utrera</option>
+            <option value="Los Palacios">Los Palacios</option>
+            <option value="Dos Hermanas">Dos Hermanas</option>
+        </select>
+        <p style="margin: 0;">Localidad: <span id="localidad" style="color: crimson;"></span></p>
+    </div>
+
+    <script>
+        function mostrarLocalidad() {
+            document.getElementById("localidad").innerHTML = this.value;
+        }
+
+        document.getElementById("localidades").addEventListener("change", mostrarLocalidad);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function validaDireccionIP(ip) {
+            const regex = /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
+            return regex.test(ip);
+        }
+
+        console.log(validaDireccionIP("192.168.16.20")); // true
+        console.log(validaDireccionIP("255.255.255.255")); // true
+        console.log(validaDireccionIP("0.0.0.0")); // true
+        console.log(validaDireccionIP("127.0.0.1")); // true
+        console.log(validaDireccionIP("10.0.1.2")); // true
+
+        console.log(validaDireccionIP("256.100.100.100")); // false
+        console.log(validaDireccionIP("192.168.1")); // false
+        console.log(validaDireccionIP("192.168.1.1.1")); // false
+        console.log(validaDireccionIP("abc.def.gha.bcd")); // false
+        console.log(validaDireccionIP("192.168.1.-1")); // false
+    </script>
+</body>
+</html>
