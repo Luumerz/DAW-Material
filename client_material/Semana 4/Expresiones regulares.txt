@@ -1,0 +1,29 @@
+| Símbolo    | Significado                                        | Ejemplo JS                    | Resultado / Explicación                    |                      |                         |
+| ---------- | -------------------------------------------------- | ----------------------------- | ------------------------------------------ | -------------------- | ----------------------- |
+| `.`        | Cualquier carácter excepto salto de línea          | `/a.b/.test("acb")`           | true (cualquier carácter entre a y b)      |                      |                         |
+| `^`        | Inicio de línea                                    | `/^Hola/.test("Hola mundo")`  | true (empieza con "Hola")                  |                      |                         |
+| `$`        | Fin de línea                                       | `/mundo$/.test("Hola mundo")` | true (termina con "mundo")                 |                      |                         |
+| `*`        | 0 o más repeticiones del elemento anterior         | `/a*/.test("")`               | true (0 o más 'a', "" cumple)              |                      |                         |
+| `+`        | 1 o más repeticiones                               | `/a+/.test("aaa")`            | true (al menos una 'a')                    |                      |                         |
+| `?`        | 0 o 1 repetición (opcional)                        | `/colou?r/.test("color")`     | true ("color" o "colour")                  |                      |                         |
+| `{n}`      | Exactamente n repeticiones                         | `/a{3}/.test("aa")`           | false (necesita exactamente 3 'a')         |                      |                         |
+| `{n,}`     | Al menos n repeticiones                            | `/a{2,}/.test("aaa")`         | true (2 o más 'a')                         |                      |                         |
+| `{n,m}`    | Entre n y m repeticiones                           | `/a{2,4}/.test("aaa")`        | true (entre 2 y 4 'a')                     |                      |                         |
+| `[]`       | Clase de caracteres (cualquiera dentro)            | `/[abc]/.test("b")`           | true ('b' está en la lista)                |                      |                         |
+| `[^]`      | Negación: cualquier carácter excepto los indicados | `/[^abc]/.test("d")`          | true ('d' no está en la lista)             |                      |                         |
+| \`         | \`                                                 | Alternancia (OR lógico)       | \`/perro                                   | gato/.test("gato")\` | true ("perro" o "gato") |
+| `()`       | Grupo y captura                                    | `/(hola)+/.test("holahola")`  | true (captura uno o más "hola")            |                      |                         |
+| `\`        | Escape de carácter especial                        | `/\./.test("hola.")`          | true (busca un punto literal)              |                      |                         |
+| `\d`       | Dígito (equivale a `[0-9]`)                        | `/\d/.test("abc3")`           | true (hay un número)                       |                      |                         |
+| `\D`       | No dígito                                          | `/\D/.test("123a")`           | true (hay un no dígito: 'a')               |                      |                         |
+| `\w`       | Carácter de palabra (letras, números, guion bajo)  | `/\w/.test("#")`              | false ('#' no es palabra)                  |                      |                         |
+| `\W`       | No carácter de palabra                             | `/\W/.test("#")`              | true                                       |                      |                         |
+| `\s`       | Espacio en blanco (espacio, tab, salto línea)      | `/\s/.test("a b")`            | true (hay espacio)                         |                      |                         |
+| `\S`       | No espacio en blanco                               | `/\S/.test(" ")`              | false (solo espacio)                       |                      |                         |
+| `(?=...)`  | Lookahead positivo (mira adelante sin consumir)    | `/\d(?=px)/.test("10px")`     | true (dígito seguido de "px")              |                      |                         |
+| `(?!...)`  | Lookahead negativo                                 | `/\d(?!px)/.test("10em")`     | true (dígito no seguido de "px")           |                      |                         |
+| `(?<=...)` | Lookbehind positivo                                | `/(?<=\$)\d+/.test("$100")`   | true (dígito precedido de \$)              |                      |                         |
+| `(?<!...)` | Lookbehind negativo                                | `/(?<!\$)\d+/.test("100")`    | true (dígito no precedido de \$)           |                      |                         |
+| `\b`       | Límite de palabra                                  | `/\bcat\b/.test("cat fish")`  | true (coincide con palabra completa "cat") |                      |                         |
+| `\B`       | No límite de palabra                               | `/\Bcat\B/.test("educate")`   | true ("cat" dentro de palabra, no aislado) |                      |                         |
+| `\n`, `\t` | Saltos de línea y tabuladores                      | `/\n/.test("linea\nnueva")`   | true (hay salto línea)                     |                      |                         |
