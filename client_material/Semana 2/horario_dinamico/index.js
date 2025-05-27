@@ -147,8 +147,6 @@ function generarTabla() {
     encabezado += '</tr>';
     thead.innerHTML = encabezado;
     tabla.appendChild(thead);
-    thead.innerHTML += '</tr>';
-    tabla.appendChild(thead);
 
     let cuerpo = '';
     for(dato of horario){

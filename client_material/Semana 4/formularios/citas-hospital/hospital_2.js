@@ -9,59 +9,48 @@ let SEGUROS_MEDICOS = [
     { value: 6, texto: 'Sanitas' }
 ];
 
-// Escribe aquí tu código
-
 function iniciarEventos() {
+    poblarSeguroMedico();
     let btn = document.getElementById("enviar");
     btn.addEventListener("click", function (e) {
         validarFormulario(e);
     });
-
     let radios = document.querySelectorAll('input[name="medico"]');
     radios.forEach(radio => {
         radio.addEventListener("change", manejarCambioMedico);
     });
-
-    poblarSeguroMedico();
-
-    // Validación en tiempo real (opcional)
-    document.getElementById("inputDNI").addEventListener("input", validarDNI);
 }
 
 function poblarSeguroMedico() {
     document.getElementById("inputSeguroMedico").setAttribute("required", "required");
     let seguroMedico = document.getElementById("inputSeguroMedico");
-    SEGUROS_MEDICOS.forEach(seguro => {
+    for (let seguro of SEGUROS_MEDICOS) {
         let option = document.createElement("option");
         option.value = seguro.value;
         option.textContent = seguro.texto;
         seguroMedico.appendChild(option);
-    });
+    }
 }
 
 function validarFormulario(event) {
     validarNombre();
     validarApellidos();
-
     if (!validarDNI()) {
         document.getElementById("inputDNI").reportValidity();
         event.preventDefault();
         return false;
     }
-
     if (!validarTipoMedico()) {
-        document.getElementById("inputMedicoEspecialista").reportValidity();
+        document.getElementById("inputEspecialidad").reportValidity();
         event.preventDefault();
         return false;
     }
-
     if (!validarFecha()) {
         document.getElementById("inputFechaCita").reportValidity();
         event.preventDefault();
         return false;
     }
-
-    if (!validarHora()) {
+    if(!validarHoras()) {
         document.getElementById("inputHoraCita").reportValidity();
         event.preventDefault();
         return false;
@@ -69,65 +58,74 @@ function validarFormulario(event) {
 }
 
 function validarNombre() {
-    document.getElementById("inputNombre").setAttribute("required", "required");
+    let nombre = document.getElementById("inputNombre");
+    nombre.setAttribute("required", "required");
 }
 
 function validarApellidos() {
-    document.getElementById("inputApellidos").setAttribute("required", "required");
+    let apellidos = document.getElementById("inputApellidos");
+    apellidos.setAttribute("required", "required");
 }
 
 function validarDNI() {
-    let dniInput = document.getElementById("inputDNI");
-    let dni = dniInput.value.trim();
+    let inputDNI = document.getElementById("inputDNI");
 
-    dniInput.setCustomValidity("");
+    let dni = document.getElementById("inputDNI").value;
+    dni = dni.trim();
+
+    inputDNI.setCustomValidity("");
 
     if (dni === "") {
-        dniInput.setCustomValidity("El DNI es obligatorio");
+        inputDNI.setCustomValidity("El DNI es obligatorio");
         return false;
     }
 
-    let regex = /^(\d{8})-?([a-zA-Z])$/;
+    let regex = /^([0-9]{8})([a-zA-Z])$/;
     let match = dni.match(regex);
 
     if (!match) {
-        dniInput.setCustomValidity("Formato de DNI incorrecto");
+        inputDNI.setCustomValidity("Formato de DNI incorrecto");
         return false;
     }
 
     let numero = parseInt(match[1]);
     let letra = match[2].toUpperCase();
-    let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-    let letraCorrecta = letras.charAt(numero % 23);
 
-    if (letra !== letraCorrecta) {
-        dniInput.setCustomValidity("La letra del DNI no es correcta");
+    let letras = "trwagmyfpdxbnjzsqvhlcke";
+    letras = letras.toUpperCase();
+
+    let indice = numero % 23;
+    let letraCorrecta = letras.charAt(indice);
+
+    if (letra != letraCorrecta) {
+        inputDNI.setCustomValidity("La letra del DNI no es correcta");
         return false;
     }
     return true;
 }
 
 function validarTipoMedico() {
-    let tipoMedico = document.querySelector('input[name="medico"]:checked');
-
+    let tipoMedico = document.querySelector("input[name='medico']:checked");
     if (tipoMedico.id === "inputMedicoEspecialista") {
         let especialidad = document.getElementById("inputEspecialidad");
         if (!especialidad.value) {
             especialidad.setCustomValidity("La especialidad es obligatoria");
-            especialidad.reportValidity();
             return false;
         } else {
             especialidad.setCustomValidity("");
         }
+    } else {
+        let especialidad = document.getElementById("inputEspecialidad");
+        especialidad.setCustomValidity("");
     }
     return true;
 }
 
 function manejarCambioMedico() {
+    let tipoMedico = document.querySelector("input[name='medico']:checked");
     let especialidad = document.getElementById("inputEspecialidad");
-    let seleccionado = document.querySelector('input[name="medico"]:checked');
 
-    if (seleccionado && seleccionado.id === "inputMedicoEspecialista") {
+    if (tipoMedico && tipoMedico.id === "inputMedicoEspecialista") {
         especialidad.removeAttribute("disabled");
         especialidad.setAttribute("required", "required");
     } else {
@@ -138,54 +136,50 @@ function manejarCambioMedico() {
 }
 
 function validarFecha() {
-    let fechaInput = document.getElementById("inputFechaCita");
-    fechaInput.setAttribute("required", "required");
-    let fechaCita = fechaInput.value;
-    let fecha = new Date(fechaCita);
-
-    if (fecha.getDay() < 1 || fecha.getDay() > 4) {
-        fechaInput.setCustomValidity("La cita debe ser de lunes a jueves");
+    let inputFecha = document.getElementById("inputFechaCita");
+    inputFecha.setAttribute("required", "required");
+    let fecha = new Date(inputFecha.value);
+    let dia = fecha.getDay();
+    if (dia < 1 || dia > 4) {
+        inputFecha.setCustomValidity("La cita solo puede ser de lunes a jueves");
         return false;
     } else {
-        fechaInput.setCustomValidity("");
+        inputFecha.setCustomValidity("");
     }
     return true;
 }
 
-function validarHora() {
-    let fechaInput = document.getElementById("inputFechaCita");
-    let horaInput = document.getElementById("inputHoraCita");
+function validarHoras() {
+    let inputHoras = document.getElementById("inputHoraCita");
+    inputHoras.setAttribute("required", "required");
 
-    let fecha = new Date(fechaInput.value);
-    let hora = horaInput.value;
+    let inputFecha = document.getElementById("inputFechaCita");
+    let fecha = new Date(inputFecha.value);
 
-    horaInput.setCustomValidity("");
+    let [horaH, minutoH] = inputHoras.value.split(":").map(Number);
 
-    horaInput.setAttribute("required", "required");
-
-    let [horaH, minutoH] = hora.split(":").map(Number);
     let minutosTotales = horaH * 60 + minutoH;
 
-    let diaSemana = fecha.getDay();
-
-    if (diaSemana >= 1 && diaSemana <= 3) {
-        // Lunes a miércoles: 10:00 - 14:15
-        let desde = 10 * 60;      
-        let hasta = 14 * 60 + 15; 
-        if (minutosTotales < desde || minutosTotales > hasta) {
-            horaInput.setCustomValidity("La hora debe estar entre 10:00 y 14:15 de lunes a miércoles");
+    if (fecha.getDay() >= 1 && fecha.getDay() <= 3) {
+        let inicio = 10 * 60;
+        let final = 14 * 60 + 15;
+        if (minutosTotales < inicio || minutosTotales > final) {
+            inputHoras.setCustomValidity("La hora debe estarcomprendida entre las 10:00 y las 14:15 los lunes, martes y miércoles");
             return false;
-        }
-    } else if (diaSemana === 4) {
-        // Jueves: 18:30 - 20:00
-        let desde = 18 * 60 + 30; // 1110
-        let hasta = 20 * 60;      // 1200
-        if (minutosTotales < desde || minutosTotales > hasta) {
-            horaInput.setCustomValidity("La hora debe estar entre 18:30 y 20:00 los jueves");
-            return false;
+        } else {
+            inputHoras.setCustomValidity("");
         }
     }
 
+    if (fecha.getDay() == 4) {
+        let inicio = 18 * 60 + 30;
+        let final = 20 * 60;
+        if (minutosTotales < inicio || minutosTotales > final) {
+            inputHoras.setCustomValidity("La hora debe estarcomprendida entre las 18:30 y las 20:00 los jueves");
+            return false;
+        } else {
+            inputHoras.setCustomValidity("");
+        }
+    }
     return true;
 }
-
